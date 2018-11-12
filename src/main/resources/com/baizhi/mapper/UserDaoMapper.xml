@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.UserDao">
+    <insert id="saveUser" parameterType="com.baizhi.entity.User">
+        insert into cmfz_user
+        values (#{id},#{phoneNum},,#{username},#{password},#{salt},#{province},#{city},#{nickname},#{gender},#{sign},#{headPic},#{status},#{date})
+    </insert>
+
+    <select id="queryUser" parameterType="com.baizhi.entity.User" resultType="com.baizhi.entity.User">
+          select  id,phoneNum,username,password,salt,province,city,nickname,gender,sign,headPic,status,date
+          from cmfz_user
+          where username=#{username} and password=#{password}
+    </select>
+
+    <update id="updateUser" parameterType="com.baizhi.entity.User">
+        update cmfz_user set phoneNum=#{phoneNum},username=#{username},password=#{password},salt=#{salt},province=#{province},city=#{city},nickname=#{nickname},gender=#{gender},sign=#{sign},headPic=#{headPic},status=#{status},date=#{date}
+        where id=#{id}
+    </update>
+
+</mapper>

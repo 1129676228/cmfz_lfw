@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.GuruDao">
+    <select id="queryAllGuru" parameterType="com.baizhi.entity.Guru" resultType="com.baizhi.entity.Guru">
+        select id,name,headPic,sex
+        from cmfz_guru
+    </select>
+
+    <insert id="saveGuru" parameterType="com.baizhi.entity.Guru">
+        insert into cmfz_guru
+        values (#{id} ,#{name} ,#{headPic} ,#{sex})
+    </insert>
+
+    <update id="updateGuru" parameterType="com.baizhi.entity.Guru">
+        update cmfz_guru set name=#{name},headPic=#{headPic},sex=#{sex}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteGuru" parameterType="com.baizhi.entity.Guru">
+        delete from cmfz_guru where id=#{id}
+    </delete>
+
+    <select id="queryOne"   resultType="com.baizhi.entity.Guru">
+        select id,name,headPic,sex
+        from cmfz_guru
+        where id=#{id}
+    </select>
+</mapper>
